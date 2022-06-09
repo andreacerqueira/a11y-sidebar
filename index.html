@@ -1,0 +1,170 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        @charset "UTF-8";
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+            font-size: 1.4rem;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        nav {
+            width: 20rem;
+            height: 100%;
+            background-color: #333;
+            box-shadow: 3px 0px 3px rgba(0, 0, 0, 0.2);
+        }
+        nav ul {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            background-color: #333;
+        }
+        nav ul li {
+            list-style: none;
+            position: relative;
+            border-bottom: #484a4a solid 0.1rem;
+        }
+        nav ul li a {
+            padding: 1.5rem 2rem;
+            display: block;
+            color: white;
+            text-align: left;
+            font-size: 1.8rem;
+            text-decoration: none;
+            box-sizing: content-box;
+            transition: all 0.2s ease-in;
+        }
+        nav ul li a:hover {
+            color: #35c0cc;
+        }
+        nav ul li.item {
+            list-style: none;
+            position: relative;
+        }
+        nav ul li.item > a:after {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 1rem;
+            color: #35c0cc;
+            content: "";
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        nav ul li.item.open > a:after {
+            transform: rotate(180deg);
+        }
+        nav ul li.item.open > .submenu {
+            visibility: visible;
+            max-height: 40rem;
+            transition: visibility 0.5s, max-height 0.5s;
+        }
+        nav ul li.item .submenu {
+            visibility: collapse;
+            max-height: 0;
+            width: 100%;
+            overflow: hidden;
+            font-size: 1.2rem;
+            transition: visibility 0.3s, max-height 0.3s;
+        }
+        nav ul li.item .submenu li {
+            border-bottom: none;
+        }
+        nav ul li.item .submenu li a {
+            margin-left: 2rem;
+            font-size: 1.4rem;
+            color: white;
+        }
+        nav ul li.item .submenu li a:hover {
+            color: #35c0cc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav aria-label="Main Navigation">
+        <ul>
+
+            <li class="item">
+                <a href="#" aria-expanded="false">Menu 1</a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#">Submenu 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Submenu 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Submenu 3</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="item">
+                <a href="#" aria-expanded="false">Menu 2</a>
+                <ul class="submenu">
+                    <li>
+                        <a href="#">Submenu 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Submenu 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Submenu 3</a>
+                    </li>
+                    <li>
+                        <a href="#">Submenu 4</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">Menu 3</a>
+            </li>
+
+            <li>
+                <a href="#">Menu 4</a>
+            </li>
+
+            <li>
+                <a href="#">Menu 5</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="main.js"></script> -->
+    <script>
+        $('document').ready(function () {
+            $('.item a').on('click', function() {
+
+                if ($(this).parent().hasClass('open')) {
+                    $('.item').removeClass('open');
+                    $(this).attr('aria-expanded', 'false');
+                } else {
+                    $('.item').removeClass('open');
+                    $(this).parent().addClass('open'); 
+                    $(this).attr('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
+
+</body>
